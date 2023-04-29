@@ -3,6 +3,7 @@ from .models import Product, Order, OrderItem, Customer, Collection
 from django.db.models import Count
 from django.utils.html import format_html, urlencode
 from django.urls import reverse
+from django.contrib.contenttypes.admin import GenericTabularInline
 
 
 class InventoryFilter(admin.SimpleListFilter):
