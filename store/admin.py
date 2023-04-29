@@ -76,12 +76,21 @@ class CustomerAdmin(admin.ModelAdmin):
             orders_count=Count('order'))
 
 
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    extra = 0
+    min_num = 1
+    max_num = 10
+
+
 @admin.register(Order)
 class OrderAdmin(admin.ModelAdmin):
     autocomplete_fields = ['customer']
     list_display = ('id', 'placed_at', 'customer', 'payment_status')
+    inlines = [OrderItemInline]
     list_per_page = 20
     list_filter = ('payment_status',)
+    search_fields = ('product__title__istartswith',)
 
 
 @admin.register(Collection)
