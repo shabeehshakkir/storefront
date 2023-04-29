@@ -15,6 +15,7 @@ class TaggedItemManager(models.Manager):
             )
 
 
+
 class Tag(models.Model):
     label = models.CharField(max_length=255)
 
